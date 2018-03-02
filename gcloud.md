@@ -9,7 +9,7 @@ GCloud API with all the functions to handle images inside the google cloud.
 
 // To check which images are available for a image execute the commando:
 % gcloud container images list-tags [HOSTNAME]/[PROJECT-ID]/[IMAGE][:TAG]
-% gcloud container images list-tags gcr.io/my_project/metricbeat
+% gcloud container images list-tags gcr.io/my-project-name/busybox
 
 
 // To create a new local image (inside the cloud) you should use the build.yaml files that usually
@@ -17,3 +17,7 @@ GCloud API with all the functions to handle images inside the google cloud.
 // Just run the command from the head of the file:
 
 gcloud container builds submit . --config build.yaml
+
+
+Command to read the sha256 from an imagem
+gcloud container images describe gcr.io/my-project-name/busybox | grep " digest:" | cut -d ':' -f 3
